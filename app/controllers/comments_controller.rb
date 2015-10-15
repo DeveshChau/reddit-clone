@@ -18,9 +18,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
+    @link = @comment.link
+    @comment.destroy    
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to @link, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
